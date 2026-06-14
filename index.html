@@ -1,29 +1,275 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interraqt</title>
+    <title>interraqt.com is for sale</title>
+    <!-- Google Fonts for Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f9;
-            color: #333;
+        :root {
+            --bg-color: #0a0b0e;
+            --card-bg: #12141c;
+            --text-primary: #ffffff;
+            --text-secondary: #8a8f98;
+            --gold: #d4af37;
+            --gold-hover: #f3cf65;
+            --border: rgba(212, 175, 55, 0.2);
         }
-        .container {
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Force 100% viewport height */
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        /* Premium subtle background glow effect */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, rgba(0,0,0,0) 70%);
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+
+        header {
+            padding: 20px 20px; /* Reduced padding */
             text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem; /* Slightly smaller logo */
+            letter-spacing: 4px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px; /* Reduced padding */
+        }
+
+        .hero-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px 30px; /* Reduced padding */
+            max-width: 650px; /* Slightly narrower */
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            /* Ensure the card itself doesn't cause overflow on very small screens */
+            max-height: 100%; 
+            overflow-y: auto;
+        }
+
+        .badge {
+            display: inline-block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem; /* Smaller badge text */
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+            border: 1px solid var(--gold);
+            padding: 4px 12px; /* Smaller padding */
+            border-radius: 50px;
+            margin-bottom: 16px; /* Reduced margin */
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem; /* Reduced font size */
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 12px; /* Reduced margin */
+            background: linear-gradient(135deg, #fff 0%, #a3a3a3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            color: var(--text-secondary);
+            font-size: 0.95rem; /* Reduced font size */
+            font-weight: 300;
+            max-width: 500px;
+            margin: 0 auto 24px auto; /* Reduced margin */
+        }
+
+        .price-tag {
+            margin-bottom: 24px; /* Reduced margin */
+            padding: 12px; /* Reduced padding */
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            border-left: 3px solid var(--gold);
+        }
+
+        .price-label {
+            font-size: 0.75rem; /* Reduced font size */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            margin-bottom: 2px;
+        }
+
+        .price-value {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem; /* Reduced font size */
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: #000000;
+            text-decoration: none;
+            padding: 14px 30px; /* Reduced padding */
+            font-size: 0.95rem; /* Reduced font size */
+            font-weight: 600;
+            border-radius: 6px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            width: 100%;
+            max-width: 280px;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .notice {
+            margin-top: 12px; /* Reduced margin */
+            font-size: 0.75rem; /* Reduced font size */
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Trust Indicators Grid */
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px; /* Reduced gap */
+            margin-top: 30px; /* Reduced margin */
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 25px; /* Reduced padding */
+        }
+
+        .trust-item h3 {
+            font-size: 0.8rem; /* Reduced font size */
+            color: var(--text-primary);
+            margin-bottom: 4px; /* Reduced margin */
+            font-weight: 600;
+        }
+
+        .trust-item p {
+            font-size: 0.7rem; /* Reduced font size */
+            color: var(--text-secondary);
+            line-height: 1.4; /* Tighter line height */
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px 20px; /* Reduced padding */
+            color: var(--text-secondary);
+            font-size: 0.75rem; /* Reduced font size */
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive Design Modifications */
+        @media (max-width: 768px) {
+            body {
+                overflow: auto; /* Allow scrolling on mobile if absolutely necessary */
+                height: auto;
+                min-height: 100vh;
+            }
+            h1 { font-size: 1.8rem; }
+            .price-value { font-size: 1.6rem; }
+            .hero-card { padding: 30px 20px; }
+            .trust-grid { 
+                grid-template-columns: 1fr; 
+                gap: 15px; 
+                margin-top: 20px;
+                padding-top: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Hello World!</h1>
-        <p>Interraqt.com is successfully connected to GitHub Pages.</p>
-    </div>
+
+    <header>
+        <div class="logo">Interraqt<span>.com</span></div>
+    </header>
+
+    <main>
+        <div class="hero-card">
+            <span class="badge">Premium Acquisition Opportunity</span>
+            <h1>Asset Available</h1>
+            <p class="tagline">Secure the ultimate digital identity. Perfectly positioned for a next-generation AI application or a global interactive social media network.</p>
+            
+            <div class="price-tag">
+                <div class="price-label">Established Valuation</div>
+                <div class="price-value">$100M USD</div>
+            </div>
+
+            <a href="mailto:hardikkalal360@gmail.com?subject=Inquiry: interraqt.com acquisition" class="cta-btn">Submit Secure Inquiry</a>
+            <p class="notice">Serious institutional inquiries only. Brokers protected.</p>
+
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <h3>Pristine Brand</h3>
+                    <p>A highly brandable, memorable, and modern name built for tech innovation.</p>
+                </div>
+                <div class="trust-item">
+                    <h3>Global Scale</h3>
+                    <p>Instantly commands authority in the AI and social media application space.</p>
+                </div>
+                <div class="trust-item">
+                    <h3>Secure Transfer</h3>
+                    <p>Processed exclusively via tier-1 escrow services for total buyer protection.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Interraqt. All rights reserved. Valuation subject to prior sale.</p>
+    </footer>
+
 </body>
 </html>
+
+
+```
