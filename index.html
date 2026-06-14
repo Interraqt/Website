@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Aggressive viewport settings to disable all zooming and scaling -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover">
+    <!-- Updated viewport: Removed scale limits to allow zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
     <!-- Primary SEO Meta Tags -->
     <title>Interraqt.com | Premium AI & Social Media Domain For Sale</title>
@@ -64,7 +65,6 @@
             --modal-bg: rgba(10, 11, 14, 0.95);
         }
 
-        /* HARD RESET & STRICT SCROLL PREVENTION */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -76,8 +76,7 @@
             width: 100vw;
             height: 100vh; /* Fallback */
             height: -webkit-fill-available;
-            overflow: hidden; /* ABSOLUTE KILL SCROLLBARS */
-            touch-action: none; /* Disables browser-level zooming/panning */
+            /* Removed touch-action and strict hidden overflow to allow zoom/pan */
         }
 
         body {
@@ -88,11 +87,16 @@
             display: flex;
             flex-direction: column;
             width: 100vw;
-            height: 100vh; /* Fallback */
-            height: 100%; 
-            min-height: 100%;
-            overflow: hidden; /* ABSOLUTE KILL SCROLLBARS */
+            min-height: 100vh; /* Changed from fixed height to min-height */
+            min-height: -webkit-fill-available;
+            overflow-x: hidden; 
+            overflow-y: auto; /* Allows panning if zoomed in */
             position: relative;
+        }
+
+        /* Prevent body scroll when modal is open */
+        body.modal-open {
+            overflow: hidden;
         }
 
         /* Background glow */
@@ -134,8 +138,7 @@
             align-items: center;
             justify-content: center;
             padding: 10px;
-            overflow: hidden; /* No scroll here either */
-            height: 100%; /* Force fill available space minus header/footer */
+            height: 100%; 
         }
 
         .hero-card {
@@ -149,7 +152,6 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             
-            /* Logic to shrink card contents if screen is extremely small */
             max-height: 100%; 
             display: flex;
             flex-direction: column;
@@ -173,7 +175,7 @@
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: clamp(1.5rem, 5vh, 2rem); /* Dynamic shrink based on height */
+            font-size: clamp(1.5rem, 5vh, 2rem); 
             font-weight: 700;
             letter-spacing: 2px;
             margin-bottom: 8px;
@@ -311,8 +313,8 @@
             padding: 25px 20px;
             width: 92%;
             max-width: 400px;
-            max-height: 90vh; /* Prevents modal from being taller than screen */
-            overflow-y: auto; /* Internal scroll only for modal if needed */
+            max-height: 90vh; 
+            overflow-y: auto; 
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
             transform: translateY(10px);
             transition: transform 0.2s ease;
@@ -382,7 +384,7 @@
             font-family: 'Inter', sans-serif;
             font-size: 0.85rem;
             outline: none;
-            appearance: none; /* Prevents iOS styling zoom */
+            appearance: none; 
         }
 
         /* Prevents iOS zooming on input focus */
@@ -399,17 +401,12 @@
         /* STRICT MOBILE BREAKPOINTS */
         @media (max-width: 600px) {
             .trust-grid { 
-                grid-template-columns: 1fr; /* Stack into 1 column */
+                grid-template-columns: 1fr; 
                 gap: 6px; 
             }
             .trust-item h3 { font-size: 0.75rem; }
             .trust-item p { font-size: 0.65rem; }
             .hero-card { padding: 15px; }
-        }
-
-        /* For very short landscape phones, allow internal main scroll if absolutely forced */
-        @media (max-height: 500px) {
-            main { overflow-y: auto; align-items: flex-start; padding-top: 20px;}
         }
     </style>
 </head>
@@ -502,26 +499,31 @@
             const openBtn = document.getElementById('openModalBtn');
             const closeBtn = document.getElementById('closeModalBtn');
             const modal = document.getElementById('inquiryModal');
+            const body = document.body;
 
             // Open Modal
             openBtn.addEventListener('click', () => {
                 modal.classList.add('active');
+                body.classList.add('modal-open');
             });
 
             // Close Modal via button
             closeBtn.addEventListener('click', (e) => {
-                e.preventDefault(); // Stop any form submission from X button
+                e.preventDefault(); 
                 modal.classList.remove('active');
+                body.classList.remove('modal-open');
             });
 
             // Close Modal by clicking outside
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
                     modal.classList.remove('active');
+                    body.classList.remove('modal-open');
                 }
             });
         });
     </script>
 </body>
 </html>
+
 
