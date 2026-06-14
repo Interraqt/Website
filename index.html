@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Updated viewport: Removed scale limits to allow zooming -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
     <!-- Primary SEO Meta Tags -->
@@ -73,9 +72,8 @@
 
         html {
             width: 100vw;
-            height: 100vh; /* Fallback */
+            height: 100vh;
             height: -webkit-fill-available;
-            /* Removed touch-action and strict hidden overflow to allow zoom/pan */
         }
 
         body {
@@ -86,19 +84,17 @@
             display: flex;
             flex-direction: column;
             width: 100vw;
-            min-height: 100vh; /* Changed from fixed height to min-height */
+            min-height: 100vh;
             min-height: -webkit-fill-available;
             overflow-x: hidden; 
-            overflow-y: auto; /* Allows panning if zoomed in */
+            overflow-y: auto;
             position: relative;
         }
 
-        /* Prevent body scroll when modal is open */
         body.modal-open {
             overflow: hidden;
         }
 
-        /* Background glow */
         body::before {
             content: '';
             position: absolute;
@@ -238,8 +234,16 @@
             text-transform: uppercase;
         }
 
-        .cta-btn:active {
-            transform: scale(0.98);
+        .cta-btn:hover {
+            background-color: var(--gold-hover);
+        }
+
+        .cta-btn:disabled {
+            background-color: #555;
+            color: #aaa;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
         }
 
         .notice {
@@ -386,7 +390,6 @@
             appearance: none; 
         }
 
-        /* Prevents iOS zooming on input focus */
         @media screen and (-webkit-min-device-pixel-ratio:0) { 
             .form-group input, .form-group textarea { font-size: 16px; } 
         }
@@ -395,6 +398,46 @@
             margin-top: 5px;
             width: 100%;
             max-width: 100%;
+        }
+
+        /* SUCCESS MESSAGE STYLES */
+        .success-message {
+            display: none; /* Hidden by default */
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .success-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px auto;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .success-message h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .success-message p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .countdown-text {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 15px;
+            font-style: italic;
         }
 
         /* STRICT MOBILE BREAKPOINTS */
@@ -455,70 +498,169 @@
         <div class="modal-content">
             <button id="closeModalBtn" class="close-btn" aria-label="Close form">&times;</button>
             
-            <div class="modal-header">
-                <h2>Confidential Inquiry</h2>
-                <p>Please provide verifiable details to initiate the acquisition process.</p>
+            <!-- Default Form View -->
+            <div id="formContainer">
+                <div class="modal-header">
+                    <h2>Confidential Inquiry</h2>
+                    <p>Please provide verifiable details to initiate the acquisition process.</p>
+                </div>
+
+                <!-- FormSubmit Integration -->
+                <form id="contactForm" action="https://formsubmit.co/hardikkalal360@gmail.com" method="POST" class="inquiry-form">
+                    <!-- DISABLED CAPTCHA -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New $100M Inquiry for Interraqt.com!">
+                    <input type="hidden" name="_template" value="table">
+                    
+                    <div class="form-group">
+                        <label>Representing Entity / Full Name <span class="required">*</span></label>
+                        <input type="text" name="Company_or_Name" placeholder="e.g., Acme Corp / John Doe" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Official Email Address <span class="required">*</span></label>
+                        <input type="email" name="Email_Address" placeholder="executive@company.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Contact Phone Number <span class="optional">(Optional)</span></label>
+                        <input type="tel" name="Phone_Number" placeholder="+1 (555) 000-0000">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Statement of Interest <span class="required">*</span></label>
+                        <textarea name="Message" placeholder="Brief details regarding intended use and proof of funds capability..." rows="2" required></textarea>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="cta-btn submit-btn">Transmit Securely</button>
+                </form>
             </div>
 
-            <!-- FormSubmit Integration -->
-            <form action="https://formsubmit.co/hardikkalal360@gmail.com" method="POST" class="inquiry-form">
-                <input type="hidden" name="_subject" value="New $100M Inquiry for Interraqt.com!">
-                <input type="hidden" name="_captcha" value="true">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" value="https://interraqt.com/">
-                
-                <div class="form-group">
-                    <label>Representing Entity / Full Name <span class="required">*</span></label>
-                    <input type="text" name="Company_or_Name" placeholder="e.g., Acme Corp / John Doe" required>
+            <!-- Success Message View (Hidden initially) -->
+            <div id="successContainer" class="success-message">
+                <div class="success-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
                 </div>
-                
-                <div class="form-group">
-                    <label>Official Email Address <span class="required">*</span></label>
-                    <input type="email" name="Email_Address" placeholder="executive@company.com" required>
-                </div>
+                <h2>Transmission Successful</h2>
+                <p>Your secure inquiry has been received. Our acquisitions team will review your details and contact you via the provided email shortly.</p>
+                <button id="doneBtn" class="cta-btn">Close Window</button>
+                <p class="countdown-text">Returning to main page in <span id="countdown">10</span> seconds...</p>
+            </div>
 
-                <div class="form-group">
-                    <label>Contact Phone Number <span class="optional">(Optional)</span></label>
-                    <input type="tel" name="Phone_Number" placeholder="+1 (555) 000-0000">
-                </div>
-                
-                <div class="form-group">
-                    <label>Statement of Interest <span class="required">*</span></label>
-                    <textarea name="Message" placeholder="Brief details regarding intended use and proof of funds capability..." rows="2" required></textarea>
-                </div>
-
-                <button type="submit" class="cta-btn submit-btn">Transmit Securely</button>
-            </form>
         </div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- JavaScript for Seamless AJAX Form Submission & Auto-Close -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const openBtn = document.getElementById('openModalBtn');
             const closeBtn = document.getElementById('closeModalBtn');
             const modal = document.getElementById('inquiryModal');
             const body = document.body;
+            
+            const formContainer = document.getElementById('formContainer');
+            const successContainer = document.getElementById('successContainer');
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const doneBtn = document.getElementById('doneBtn');
+            const countdownSpan = document.getElementById('countdown');
+            
+            let countdownInterval;
+
+            // Reset modal state
+            function resetModal() {
+                contactForm.reset();
+                formContainer.style.display = 'block';
+                successContainer.style.display = 'none';
+                submitBtn.innerText = 'Transmit Securely';
+                submitBtn.disabled = false;
+                clearInterval(countdownInterval);
+            }
 
             // Open Modal
             openBtn.addEventListener('click', () => {
+                resetModal();
                 modal.classList.add('active');
                 body.classList.add('modal-open');
             });
 
-            // Close Modal via button
-            closeBtn.addEventListener('click', (e) => {
-                e.preventDefault(); 
+            // Close Modal logic
+            function closeModal() {
                 modal.classList.remove('active');
                 body.classList.remove('modal-open');
+                clearInterval(countdownInterval);
+            }
+
+            closeBtn.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                closeModal();
             });
 
-            // Close Modal by clicking outside
+            doneBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                closeModal();
+            });
+
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
-                    modal.classList.remove('active');
-                    body.classList.remove('modal-open');
+                    closeModal();
                 }
+            });
+
+            // Handle AJAX Form Submission
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // Stop default redirection
+                
+                // Show loading state
+                submitBtn.innerText = 'Transmitting...';
+                submitBtn.disabled = true;
+
+                // Gather form data
+                const formData = new FormData(contactForm);
+
+                // Send data using Fetch API
+                fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json' // Crucial: Tells FormSubmit we want JSON, not a redirect
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Success! Hide form, show confirmation
+                        formContainer.style.display = 'none';
+                        successContainer.style.display = 'block';
+                        
+                        // Start 10 second countdown
+                        let timeLeft = 10;
+                        countdownSpan.innerText = timeLeft;
+                        
+                        countdownInterval = setInterval(() => {
+                            timeLeft -= 1;
+                            countdownSpan.innerText = timeLeft;
+                            
+                            if (timeLeft <= 0) {
+                                closeModal();
+                            }
+                        }, 1000);
+                        
+                    } else {
+                        // API returned an error
+                        alert("Oops! There was a problem submitting your form. Please try again.");
+                        submitBtn.innerText = 'Transmit Securely';
+                        submitBtn.disabled = false;
+                    }
+                })
+                .catch(error => {
+                    // Network error
+                    alert("Oops! There was a network error. Please check your connection and try again.");
+                    submitBtn.innerText = 'Transmit Securely';
+                    submitBtn.disabled = false;
+                });
             });
         });
     </script>
