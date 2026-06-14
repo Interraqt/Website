@@ -458,6 +458,16 @@
             .trust-item p { font-size: 0.65rem; }
             .hero-card { padding: 15px; }
         }
+    
+        /* Auto-expanding Textarea Styles */
+        textarea[name="Message"] {
+            overflow-y: hidden; /* Hides the scrollbar initially */
+            max-height: 140px; /* Caps the expansion at about 6 lines */
+            resize: none; /* Removes the ugly manual drag-corner */
+            min-height: 60px; /* Keeps the starting size looking good */
+        }
+
+        
     </style>
 </head>
 <body>
@@ -611,6 +621,20 @@
             doneBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 closeModal();
+            });
+
+            // Auto-expand the Statement of Interest box as user types
+            const messageBox = document.querySelector('textarea[name="Message"]');
+            messageBox.addEventListener('input', function() {
+                this.style.height = 'auto'; // Reset height to recalculate
+                this.style.height = this.scrollHeight + 'px'; // Expand to fit new text
+                
+                // If it hits the max-height limit (140px), show the scrollbar
+                if (this.scrollHeight >= 140) {
+                    this.style.overflowY = 'auto';
+                } else {
+                    this.style.overflowY = 'hidden';
+                }
             });
 
             
