@@ -3,7 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>interraqt.com is for sale</title>
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>Interraqt.com | Premium AI & Social Media Domain For Sale</title>
+    <meta name="title" content="Interraqt.com | Premium AI & Social Media Domain For Sale">
+    <meta name="description" content="Acquire interraqt.com, a world-class digital identity perfectly positioned for next-generation AI applications or global interactive social media networks.">
+    <meta name="keywords" content="interraqt, premium domain, domain for sale, AI domain, tech domain, social media domain, digital asset">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://interraqt.com/">
+
+    <!-- Open Graph / Facebook / LinkedIn (For Social Sharing Previews) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://interraqt.com/">
+    <meta property="og:title" content="Interraqt.com | Premium Asset Available">
+    <meta property="og:description" content="Secure the ultimate digital identity for a next-generation AI application or global interactive network. Established valuation: $100M USD.">
+    
+    <!-- Twitter Card (For Twitter/X Previews) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://interraqt.com/">
+    <meta name="twitter:title" content="Interraqt.com | Premium Asset Available">
+    <meta name="twitter:description" content="Secure the ultimate digital identity for a next-generation AI application or global interactive network. Valuation: $100M USD.">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "Interraqt.com Domain Name",
+      "description": "Premium digital identity and domain name perfectly positioned for next-generation AI applications and social media networks.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Interraqt"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://interraqt.com/",
+        "priceCurrency": "USD",
+        "price": "100000000",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+      }
+    }
+    </script>
+
     <!-- Google Fonts for Premium Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +60,7 @@
             --gold: #d4af37;
             --gold-hover: #f3cf65;
             --border: rgba(212, 175, 55, 0.2);
+            --modal-bg: rgba(10, 11, 14, 0.95);
         }
 
         * {
@@ -33,8 +76,14 @@
             line-height: 1.5;
             display: flex;
             flex-direction: column;
-            height: 100vh; /* Force 100% viewport height */
-            overflow: hidden; /* Prevent scrolling */
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        /* Prevent body scroll when modal is open */
+        body.modal-open {
+            overflow: hidden;
         }
 
         /* Premium subtle background glow effect */
@@ -51,14 +100,14 @@
         }
 
         header {
-            padding: 20px 20px; /* Reduced padding */
+            padding: 20px 20px;
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .logo {
             font-family: 'Cinzel', serif;
-            font-size: 1.3rem; /* Slightly smaller logo */
+            font-size: 1.3rem;
             letter-spacing: 4px;
             color: var(--text-primary);
             text-transform: uppercase;
@@ -73,44 +122,41 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px 20px; /* Reduced padding */
+            padding: 20px;
         }
 
         .hero-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 40px 30px; /* Reduced padding */
-            max-width: 650px; /* Slightly narrower */
+            padding: 40px 30px;
+            max-width: 650px;
             width: 100%;
             text-align: center;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
-            /* Ensure the card itself doesn't cause overflow on very small screens */
-            max-height: 100%; 
-            overflow-y: auto;
         }
 
         .badge {
             display: inline-block;
             font-family: 'Cinzel', serif;
-            font-size: 0.75rem; /* Smaller badge text */
+            font-size: 0.75rem;
             letter-spacing: 2px;
             color: var(--gold);
             text-transform: uppercase;
             border: 1px solid var(--gold);
-            padding: 4px 12px; /* Smaller padding */
+            padding: 4px 12px;
             border-radius: 50px;
-            margin-bottom: 16px; /* Reduced margin */
+            margin-bottom: 16px;
             background: rgba(212, 175, 55, 0.05);
         }
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: 2.2rem; /* Reduced font size */
+            font-size: 2.2rem;
             font-weight: 700;
             letter-spacing: 2px;
-            margin-bottom: 12px; /* Reduced margin */
+            margin-bottom: 12px;
             background: linear-gradient(135deg, #fff 0%, #a3a3a3 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -118,22 +164,24 @@
 
         .tagline {
             color: var(--text-secondary);
-            font-size: 0.95rem; /* Reduced font size */
+            font-size: 0.95rem;
             font-weight: 300;
             max-width: 500px;
-            margin: 0 auto 24px auto; /* Reduced margin */
+            margin: 0 auto 20px auto;
         }
 
         .price-tag {
-            margin-bottom: 24px; /* Reduced margin */
-            padding: 12px; /* Reduced padding */
+            margin-bottom: 24px;
+            padding: 12px;
             background: rgba(255, 255, 255, 0.02);
             border-radius: 8px;
             border-left: 3px solid var(--gold);
+            display: inline-block;
+            min-width: 280px;
         }
 
         .price-label {
-            font-size: 0.75rem; /* Reduced font size */
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--text-secondary);
@@ -142,7 +190,7 @@
 
         .price-value {
             font-family: 'Cinzel', serif;
-            font-size: 2rem; /* Reduced font size */
+            font-size: 2rem;
             font-weight: 700;
             color: var(--gold);
         }
@@ -151,9 +199,12 @@
             display: inline-block;
             background-color: var(--gold);
             color: #000000;
+            border: none;
+            cursor: pointer;
             text-decoration: none;
-            padding: 14px 30px; /* Reduced padding */
-            font-size: 0.95rem; /* Reduced font size */
+            padding: 14px 30px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
             border-radius: 6px;
             letter-spacing: 1px;
@@ -161,6 +212,7 @@
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
             width: 100%;
             max-width: 280px;
+            margin: 0 auto;
         }
 
         .cta-btn:hover {
@@ -170,8 +222,8 @@
         }
 
         .notice {
-            margin-top: 12px; /* Reduced margin */
-            font-size: 0.75rem; /* Reduced font size */
+            margin-top: 12px;
+            font-size: 0.75rem;
             color: var(--text-secondary);
             font-style: italic;
         }
@@ -180,40 +232,164 @@
         .trust-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px; /* Reduced gap */
-            margin-top: 30px; /* Reduced margin */
+            gap: 15px;
+            margin-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 25px; /* Reduced padding */
+            padding-top: 25px;
         }
 
         .trust-item h3 {
-            font-size: 0.8rem; /* Reduced font size */
+            font-size: 0.8rem;
             color: var(--text-primary);
-            margin-bottom: 4px; /* Reduced margin */
+            margin-bottom: 4px;
             font-weight: 600;
         }
 
         .trust-item p {
-            font-size: 0.7rem; /* Reduced font size */
+            font-size: 0.7rem;
             color: var(--text-secondary);
-            line-height: 1.4; /* Tighter line height */
+            line-height: 1.4;
         }
 
         footer {
             text-align: center;
-            padding: 15px 20px; /* Reduced padding */
+            padding: 15px 20px;
             color: var(--text-secondary);
-            font-size: 0.75rem; /* Reduced font size */
+            font-size: 0.75rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* MODAL STYLES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--modal-bg);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px 30px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.2s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .modal-header h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .modal-header p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .inquiry-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .form-group label span.required {
+            color: var(--gold);
+        }
+        
+        .form-group label span.optional {
+            color: var(--text-secondary);
+            font-weight: normal;
+            font-size: 0.75rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+        }
+
+        .submit-btn {
+            margin-top: 10px;
+            width: 100%;
+            max-width: 100%;
         }
 
         /* Responsive Design Modifications */
         @media (max-width: 768px) {
-            body {
-                overflow: auto; /* Allow scrolling on mobile if absolutely necessary */
-                height: auto;
-                min-height: 100vh;
-            }
             h1 { font-size: 1.8rem; }
             .price-value { font-size: 1.6rem; }
             .hero-card { padding: 30px 20px; }
@@ -222,6 +398,9 @@
                 gap: 15px; 
                 margin-top: 20px;
                 padding-top: 20px;
+            }
+            .modal-content {
+                padding: 30px 20px;
             }
         }
     </style>
@@ -243,7 +422,8 @@
                 <div class="price-value">$100M USD</div>
             </div>
 
-            <a href="mailto:hardikkalal360@gmail.com?subject=Inquiry: interraqt.com acquisition" class="cta-btn">Submit Secure Inquiry</a>
+            <!-- This button now opens the modal instead of redirecting -->
+            <button id="openModalBtn" class="cta-btn">Submit Secure Inquiry</button>
             <p class="notice">Serious institutional inquiries only. Brokers protected.</p>
 
             <div class="trust-grid">
@@ -267,5 +447,79 @@
         <p>&copy; 2026 Interraqt. All rights reserved. Valuation subject to prior sale.</p>
     </footer>
 
+    <!-- MODAL OVERLAY (Hidden by default) -->
+    <div id="inquiryModal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="closeModalBtn" class="close-btn">&times;</button>
+            
+            <div class="modal-header">
+                <h2>Confidential Inquiry</h2>
+                <p>Please provide verifiable details to initiate the acquisition process.</p>
+            </div>
+
+            <!-- FormSubmit Integration -->
+            <form action="https://formsubmit.co/hardikkalal360@gmail.com" method="POST" class="inquiry-form">
+                <!-- Security & Configuration -->
+                <input type="hidden" name="_subject" value="New $100M Inquiry for Interraqt.com!">
+                <input type="hidden" name="_captcha" value="true">
+                <input type="hidden" name="_template" value="table">
+                <!-- Redirect back to the site after submission instead of a default FormSubmit page -->
+                <input type="hidden" name="_next" value="https://interraqt.com/">
+                
+                <div class="form-group">
+                    <label>Representing Entity / Full Name <span class="required">*</span></label>
+                    <input type="text" name="Company_or_Name" placeholder="e.g., Acme Corp / John Doe" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Official Email Address <span class="required">*</span></label>
+                    <input type="email" name="Email_Address" placeholder="executive@company.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Contact Phone Number <span class="optional">(Optional)</span></label>
+                    <input type="tel" name="Phone_Number" placeholder="+1 (555) 000-0000">
+                </div>
+                
+                <div class="form-group">
+                    <label>Statement of Interest <span class="required">*</span></label>
+                    <textarea name="Message" placeholder="Brief details regarding intended use and proof of funds capability..." rows="3" required></textarea>
+                </div>
+
+                <button type="submit" class="cta-btn submit-btn">Transmit Securely</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript to handle Modal opening/closing -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const openBtn = document.getElementById('openModalBtn');
+            const closeBtn = document.getElementById('closeModalBtn');
+            const modal = document.getElementById('inquiryModal');
+            const body = document.body;
+
+            // Open Modal
+            openBtn.addEventListener('click', () => {
+                modal.classList.add('active');
+                body.classList.add('modal-open');
+            });
+
+            // Close Modal via button
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+                body.classList.remove('modal-open');
+            });
+
+            // Close Modal by clicking outside the content box
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    body.classList.remove('modal-open');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
+
